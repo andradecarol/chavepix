@@ -17,6 +17,7 @@
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/adapters/out/persistence/ChavePixRepositoryImpl.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/adapters/in/rest/response/ConsultarChavePixResponse.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/domain/model/TipoChave.java
+/home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/config/application/NullToEmptyStringSerializer.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/application/mapper/ChavePixResponseMapper.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/domain/exceptions/UnprocessableEntityException.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/ChavePixApplication.java
@@ -27,12 +28,12 @@
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/domain/model/TipoPessoa.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/adapters/in/rest/response/ErrorResponse.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/domain/ports/in/CadastrarChavePixUseCase.java
-/home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/utils/messages/MessageConstants.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/domain/exceptions/InternalServerErrorException.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/domain/exceptions/BadRequestException.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/adapters/in/rest/request/AlterarChavePixRequest.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/config/application/MessageConfig.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/adapters/in/rest/ChavePixController.java
+/home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/config/application/JacksonConfig.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/application/service/CadastrarChavePixService.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/application/service/AlterarChavePixService.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/adapters/out/persistence/ChavePixJpaRepository.java

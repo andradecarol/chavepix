@@ -21,6 +21,7 @@ br/com/chavepix/application/validator/ChavePixValidator$1.class
 br/com/chavepix/application/service/CadastrarChavePixService.class
 br/com/chavepix/adapters/in/rest/response/ErrorResponse.class
 br/com/chavepix/ChavePixApplication.class
+br/com/chavepix/config/application/NullToEmptyStringSerializer.class
 br/com/chavepix/application/mapper/ChavePixResponseMapper.class
 br/com/chavepix/adapters/in/rest/request/CadastrarChavePixRequest.class
 br/com/chavepix/adapters/out/persistence/ChavePixRepositoryImpl.class
@@ -34,7 +35,6 @@ br/com/chavepix/adapters/in/rest/response/ConsultarChavePixResponse$ConsultarCha
 br/com/chavepix/adapters/in/rest/response/AlterarChavePixResponse$AlterarChavePixResponseBuilder.class
 br/com/chavepix/adapters/in/rest/response/ErrorResponse$ErrorResponseBuilder.class
 br/com/chavepix/adapters/in/rest/request/AlterarChavePixRequest.class
-br/com/chavepix/utils/messages/MessageConstants.class
 br/com/chavepix/domain/model/TipoConta.class
 br/com/chavepix/config/application/CustomParameterNameDiscoverer.class
 br/com/chavepix/adapters/in/rest/response/ConsultarChavePixResponse.class
@@ -42,4 +42,5 @@ br/com/chavepix/domain/exceptions/RestException.class
 br/com/chavepix/domain/exceptions/BadRequestException.class
 br/com/chavepix/application/validator/ChavePixValidator.class
 br/com/chavepix/domain/model/ChavePix.class
+br/com/chavepix/config/application/JacksonConfig.class
 br/com/chavepix/domain/ports/in/AlterarChavePixUseCase.class

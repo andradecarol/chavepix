@@ -29,6 +29,7 @@ public class MessageErrorCodeConstants {
     public static final String LIMITE_CHAVE_EXCEDIDO = "400.019";
     public static final String CHAVE_EXISTENTE= "400.020";
     public static final String ADDITIONAL_FIELDS_NOT_ALLOWED = "400.021";
+    public static final String FILTRO_INVALIDO = "400.022";
 
     //HTTP 404
     public static final String NOT_FOUND = "404.000";

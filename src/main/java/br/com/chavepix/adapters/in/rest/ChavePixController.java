@@ -5,6 +5,7 @@ import br.com.chavepix.adapters.in.rest.request.CadastrarChavePixRequest;
 import br.com.chavepix.adapters.in.rest.response.AlterarChavePixResponse;
 import br.com.chavepix.adapters.in.rest.response.CadastrarChavePixResponse;
 import br.com.chavepix.config.application.MessageConfig;
+import br.com.chavepix.domain.exceptions.BadRequestException;
 import br.com.chavepix.domain.exceptions.ChavePixException;
 import br.com.chavepix.domain.exceptions.UnprocessableEntityException;
 import br.com.chavepix.domain.ports.in.AlterarChavePixUseCase;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 import static br.com.chavepix.domain.exceptions.MessageErrorCodeConstants.FILTRO_ID_COMBINADO;
+import static br.com.chavepix.domain.exceptions.MessageErrorCodeConstants.FILTRO_INVALIDO;
 
 @RestController
 @RequestMapping("/api/v1/chaves-pix")
@@ -92,7 +94,7 @@ public class ChavePixController {
                 return ResponseEntity.ok(resposta);
             }
 
-            return ResponseEntity.badRequest().body("É necessário informar pelo menos um filtro válido para consulta.");
+            throw new BadRequestException(FILTRO_INVALIDO, messageConfig.getMessage(FILTRO_INVALIDO));
 
         } catch (ChavePixException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());

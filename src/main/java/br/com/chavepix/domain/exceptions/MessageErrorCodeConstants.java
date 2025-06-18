@@ -46,6 +46,8 @@ public class MessageErrorCodeConstants {
     public static final String NOME_INVALIDO= "422.007";
     public static final String SOBRENOME_INVALIDO= "422.008";
     public static final String AGENCIA_INVALIDA= "422.009";
+    public static final String TIPO_CHAVE_NAO_CORRESPONDE= "422.010";
+    public static final String FILTRO_ID_COMBINADO= "422.011";
 
     //HTTP 500
     public static final String INTERNAL_SERVER_ERROR = "500.000";

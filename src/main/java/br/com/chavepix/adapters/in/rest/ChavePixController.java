@@ -4,7 +4,9 @@ import br.com.chavepix.adapters.in.rest.request.AlterarChavePixRequest;
 import br.com.chavepix.adapters.in.rest.request.CadastrarChavePixRequest;
 import br.com.chavepix.adapters.in.rest.response.AlterarChavePixResponse;
 import br.com.chavepix.adapters.in.rest.response.CadastrarChavePixResponse;
+import br.com.chavepix.config.application.MessageConfig;
 import br.com.chavepix.domain.exceptions.ChavePixException;
+import br.com.chavepix.domain.exceptions.UnprocessableEntityException;
 import br.com.chavepix.domain.ports.in.AlterarChavePixUseCase;
 import br.com.chavepix.domain.ports.in.CadastrarChavePixUseCase;
 import br.com.chavepix.domain.ports.in.ConsultarChavePixUseCase;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+import static br.com.chavepix.domain.exceptions.MessageErrorCodeConstants.FILTRO_ID_COMBINADO;
+
 @RestController
 @RequestMapping("/api/v1/chaves-pix")
 @RequiredArgsConstructor
@@ -24,6 +28,7 @@ public class ChavePixController {
     private final CadastrarChavePixUseCase cadastrarService;
     private final AlterarChavePixUseCase alterarService;
     private final ConsultarChavePixUseCase consultarService;
+    private final MessageConfig messageConfig;
 
 
     @PostMapping
@@ -48,6 +53,8 @@ public class ChavePixController {
     ) {
         AlterarChavePixResponse response = alterarService.alterarChave(
                 id,
+                request.getTipoChave(),
+                request.getValorChave(),
                 request.getTipoConta(),
                 request.getNumeroAgencia(),
                 request.getNumeroConta(),
@@ -66,7 +73,7 @@ public class ChavePixController {
     ) {
         boolean outrosFiltros = agencia != null || numeroConta != null || nomeCorrentista != null;
         if (id != null && outrosFiltros) {
-            return ResponseEntity.unprocessableEntity().body("Consulta por ID não pode combinar com outros filtros.");
+            throw new UnprocessableEntityException(FILTRO_ID_COMBINADO, messageConfig.getMessage(FILTRO_ID_COMBINADO));
         }
 
         try {

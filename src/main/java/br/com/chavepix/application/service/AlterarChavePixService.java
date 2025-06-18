@@ -6,7 +6,9 @@ import br.com.chavepix.application.validator.ChavePixValidator;
 import br.com.chavepix.config.application.MessageConfig;
 import br.com.chavepix.domain.exceptions.BadRequestException;
 import br.com.chavepix.domain.exceptions.NotFoundException;
+import br.com.chavepix.domain.exceptions.UnprocessableEntityException;
 import br.com.chavepix.domain.model.ChavePix;
+import br.com.chavepix.domain.model.TipoChave;
 import br.com.chavepix.domain.model.TipoConta;
 import br.com.chavepix.domain.ports.in.AlterarChavePixUseCase;
 import br.com.chavepix.domain.ports.out.ChavePixRepository;
@@ -16,8 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-import static br.com.chavepix.domain.exceptions.MessageErrorCodeConstants.CHAVE_INATIVA;
-import static br.com.chavepix.domain.exceptions.MessageErrorCodeConstants.CHAVE_NAO_ENCONTRADA;
+import static br.com.chavepix.domain.exceptions.MessageErrorCodeConstants.*;
 
 @Slf4j
 @Service
@@ -30,7 +31,7 @@ public class AlterarChavePixService implements AlterarChavePixUseCase {
 
 
     @Override
-    public AlterarChavePixResponse alterarChave(UUID id, TipoConta tipoConta, Integer numeroAgencia, Integer numeroConta, String nomeCorrentista, String sobrenomeCorrentista) {
+    public AlterarChavePixResponse alterarChave(UUID id, TipoChave tipoChave, String valorChave, TipoConta tipoConta, Integer numeroAgencia, Integer numeroConta, String nomeCorrentista, String sobrenomeCorrentista) {
         log.info("Iniciando alteração da chave Pix com ID {}", id);
 
         ChavePix chave = repository.buscarPorId(id)
@@ -44,9 +45,13 @@ public class AlterarChavePixService implements AlterarChavePixUseCase {
             throw new BadRequestException(CHAVE_INATIVA, messageConfig.getMessage(CHAVE_INATIVA));
         }
 
+        if (!chave.getTipoChave().equals(tipoChave)) {
+            throw new UnprocessableEntityException(TIPO_CHAVE_NAO_CORRESPONDE, messageConfig.getMessage(TIPO_CHAVE_NAO_CORRESPONDE));
+        }
+
         validator.validarCampos(
-                chave.getTipoChave(),
-                chave.getValorChave(),
+                tipoChave,
+                valorChave,
                 tipoConta,
                 numeroAgencia,
                 numeroConta,
@@ -54,7 +59,7 @@ public class AlterarChavePixService implements AlterarChavePixUseCase {
                 sobrenomeCorrentista
         );
 
-        chave.atualizarDadosPermitidos(tipoConta, numeroAgencia, numeroConta, nomeCorrentista, sobrenomeCorrentista);
+        chave.atualizarDadosPermitidos(tipoConta, valorChave, numeroAgencia, numeroConta, nomeCorrentista, sobrenomeCorrentista);
         repository.salvar(chave);
 
         log.info("Chave Pix atualizada com sucesso: id={}", id);

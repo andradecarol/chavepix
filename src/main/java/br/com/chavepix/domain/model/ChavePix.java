@@ -47,6 +47,7 @@ public class ChavePix {
     }
 
     public void atualizarDadosPermitidos(TipoConta tipoConta,
+                                         String valorChave,
                                          Integer numeroAgencia,
                                          Integer numeroConta,
                                          String nomeCorrentista,
@@ -56,6 +57,7 @@ public class ChavePix {
         }
 
         this.tipoConta = tipoConta;
+        this.valorChave = valorChave;
         this.numeroAgencia = numeroAgencia;
         this.numeroConta = numeroConta;
         this.nomeCorrentista = nomeCorrentista;

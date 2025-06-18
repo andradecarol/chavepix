@@ -25,22 +25,15 @@ public class MessageErrorCodeConstants {
     public static final String FIELD_NOT_ALLOWED = "400.015";
     public static final String HEADER_FIELD_REQUIRED = "400.016";
     public static final String HEADER_FIELD_INVALID = "400.017";
-    public static final String ENUM_INVALIDO = "400.018";
-    public static final String DOCUMENTO_INVALIDO = "400.019";
-    public static final String DATA_FORMATO_INVALIDO = "400.021";
-    public static final String APOLICE_INEXISTENTE = "400.022";
-    public static final String CHAVE_INATIVA = "400.023";
-    public static final String LIMITE_CHAVE_EXCEDIDO = "400.024";
-    public static final String CHAVE_EXISTENTE= "400.025";
-    public static final String ADDITIONAL_FIELDS_NOT_ALLOWED = "400.026";
+    public static final String CHAVE_INATIVA = "400.018";
+    public static final String LIMITE_CHAVE_EXCEDIDO = "400.019";
+    public static final String CHAVE_EXISTENTE= "400.020";
+    public static final String ADDITIONAL_FIELDS_NOT_ALLOWED = "400.021";
 
     //HTTP 404
     public static final String NOT_FOUND = "404.000";
     public static final String CHAVE_NAO_ENCONTRADA = "404.001";
 
-    //HTTP 409
-    public static final String CONFLITO = "409.000";
-    public static final String APOLICE_EXISTENTE = "409.001";
 
     //HTTP 422
     public static final String BUSINESS_ERROR = "422.000";
@@ -53,8 +46,6 @@ public class MessageErrorCodeConstants {
     public static final String NOME_INVALIDO= "422.007";
     public static final String SOBRENOME_INVALIDO= "422.008";
     public static final String AGENCIA_INVALIDA= "422.009";
-
-
 
     //HTTP 500
     public static final String INTERNAL_SERVER_ERROR = "500.000";

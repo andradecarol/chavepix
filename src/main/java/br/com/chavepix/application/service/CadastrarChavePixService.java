@@ -10,11 +10,10 @@ import br.com.chavepix.domain.model.TipoPessoa;
 import br.com.chavepix.domain.ports.in.CadastrarChavePixUseCase;
 import br.com.chavepix.domain.ports.out.ChavePixRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class CadastrarChavePixService implements CadastrarChavePixUseCase {
@@ -24,13 +23,13 @@ public class CadastrarChavePixService implements CadastrarChavePixUseCase {
 
     @Override
     public CadastrarChavePixResponse cadastrarChave(TipoChave tipoChave, String valorChave, TipoConta tipoConta, TipoPessoa tipoPessoa, Integer numeroAgencia, Integer numeroConta, String nomeCorrentista, String sobrenomeCorrentista) {
+        log.info("Iniciando cadastro da chave Pix do tipo {} para conta {}-{}", tipoChave, numeroAgencia, numeroConta);
 
         validator.validarChaveExistente(valorChave);
         validator.validarLimitePorConta(numeroAgencia, numeroConta, tipoPessoa);
         validator.validarCampos(tipoChave, valorChave, tipoConta, numeroAgencia, numeroConta, nomeCorrentista, sobrenomeCorrentista);
 
         ChavePix novaChave = new ChavePix(
-                UUID.randomUUID(),
                 tipoChave,
                 valorChave,
                 tipoConta,
@@ -38,13 +37,12 @@ public class CadastrarChavePixService implements CadastrarChavePixUseCase {
                 numeroAgencia,
                 numeroConta,
                 nomeCorrentista,
-                sobrenomeCorrentista,
-                LocalDateTime.now(),
-                null
+                sobrenomeCorrentista
         );
 
         repository.salvar(novaChave);
 
+        log.info("Chave Pix cadastrada com sucesso: id={}, tipo={}, conta {}-{}", novaChave.getId(), tipoChave, numeroAgencia, numeroConta);
         return ChavePixResponseMapper.toCadastrarResponse(novaChave);
     }
 }

@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("ChavePixController Tests")
+@DisplayName("ChavePixController - Testes Unitários")
 public class ChavePixControllerTest {
 
     @Mock

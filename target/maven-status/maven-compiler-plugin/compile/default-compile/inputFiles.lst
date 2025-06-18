@@ -2,6 +2,7 @@
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/adapters/in/rest/response/CadastrarChavePixResponse.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/application/service/ConsultarChavePixService.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/config/application/JacksonPropertyNodeNameProvider.java
+/home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/adapters/in/rest/ControllerAdvice.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/domain/model/TipoConta.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/domain/model/ChavePix.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/config/application/OpenAPIConfig.java
@@ -20,6 +21,7 @@
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/domain/exceptions/UnprocessableEntityException.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/ChavePixApplication.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/adapters/out/persistence/ChavePixEntity.java
+/home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/application/validator/ChavePixValidator.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/application/mapper/ChavePixMapper.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/adapters/in/rest/response/AlterarChavePixResponse.java
 /home/carolinaandrade/Pessoal/chavepix/src/main/java/br/com/chavepix/domain/model/TipoPessoa.java

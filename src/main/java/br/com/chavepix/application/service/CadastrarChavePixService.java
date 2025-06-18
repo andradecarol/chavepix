@@ -1,9 +1,8 @@
 package br.com.chavepix.application.service;
 
-import br.com.chavepix.adapters.in.rest.request.CadastrarChavePixRequest;
 import br.com.chavepix.adapters.in.rest.response.CadastrarChavePixResponse;
 import br.com.chavepix.application.mapper.ChavePixResponseMapper;
-import br.com.chavepix.domain.exceptions.ChavePixException;
+import br.com.chavepix.application.validator.ChavePixValidator;
 import br.com.chavepix.domain.model.ChavePix;
 import br.com.chavepix.domain.model.TipoChave;
 import br.com.chavepix.domain.model.TipoConta;
@@ -14,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -22,19 +20,14 @@ import java.util.UUID;
 public class CadastrarChavePixService implements CadastrarChavePixUseCase {
 
     private final ChavePixRepository repository;
+    private final ChavePixValidator validator;
 
     @Override
     public CadastrarChavePixResponse cadastrarChave(TipoChave tipoChave, String valorChave, TipoConta tipoConta, TipoPessoa tipoPessoa, Integer numeroAgencia, Integer numeroConta, String nomeCorrentista, String sobrenomeCorrentista) {
-        if (repository.chaveJaExiste(valorChave)) {
-            throw new ChavePixException("Chave Pix já cadastrada.");
-        }
 
-        List<ChavePix> chavesExistentes = repository.buscarPorConta(numeroAgencia, numeroConta);
-        var limite = (tipoPessoa == TipoPessoa.PESSOA_FISICA) ? 5 :20;
-
-        if (chavesExistentes.size() >= limite) {
-            throw new ChavePixException("Limite de chaves excedido para a conta.");
-        }
+        validator.validarChaveExistente(valorChave);
+        validator.validarLimitePorConta(numeroAgencia, numeroConta, tipoPessoa);
+        validator.validarCampos(tipoChave, valorChave, tipoConta, numeroAgencia, numeroConta, nomeCorrentista, sobrenomeCorrentista);
 
         ChavePix novaChave = new ChavePix(
                 UUID.randomUUID(),
@@ -53,18 +46,5 @@ public class CadastrarChavePixService implements CadastrarChavePixUseCase {
         repository.salvar(novaChave);
 
         return ChavePixResponseMapper.toCadastrarResponse(novaChave);
-    }
-
-    public CadastrarChavePixResponse cadastrar(CadastrarChavePixRequest request) {
-        return this.cadastrarChave(
-                request.getTipoChave(),
-                request.getValorChave(),
-                request.getTipoConta(),
-                request.getTipoPessoa(),
-                request.getNumeroAgencia(),
-                request.getNumeroConta(),
-                request.getNomeCorrentista(),
-                request.getSobrenomeCorrentista()
-        );
     }
 }

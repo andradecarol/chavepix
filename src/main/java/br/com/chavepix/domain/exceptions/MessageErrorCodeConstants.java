@@ -29,12 +29,14 @@ public class MessageErrorCodeConstants {
     public static final String DOCUMENTO_INVALIDO = "400.019";
     public static final String DATA_FORMATO_INVALIDO = "400.021";
     public static final String APOLICE_INEXISTENTE = "400.022";
-    public static final String ITEM_APOLICE_INEXISTENTE = "400.023";
-    public static final String NUMERO_APOLICE_INVALIDO = "400.024";
-    public static final String NUMERO_CHASSI_INVALIDO = "400.025";
+    public static final String CHAVE_INATIVA = "400.023";
+    public static final String LIMITE_CHAVE_EXCEDIDO = "400.024";
+    public static final String CHAVE_EXISTENTE= "400.025";
+    public static final String ADDITIONAL_FIELDS_NOT_ALLOWED = "400.026";
 
     //HTTP 404
     public static final String NOT_FOUND = "404.000";
+    public static final String CHAVE_NAO_ENCONTRADA = "404.001";
 
     //HTTP 409
     public static final String CONFLITO = "409.000";
@@ -42,12 +44,17 @@ public class MessageErrorCodeConstants {
 
     //HTTP 422
     public static final String BUSINESS_ERROR = "422.000";
-    public static final String DATA_ORDEM_INICIO_FIM = "422.001";
-    public static final String DATA_ORDEM_EMISSAO_INICIO = "422.002";
-    public static final String ERRO_SEGMENTO_INDIVIDUAL = "422.003";
-    public static final String ERRO_SEGMENTO_FROTA = "422.004";
-    public static final String QUANTIDADE_ITEM_INVALIDO = "422.005";
-    public static final String SEGMENTO_INVALIDO = "422.006";
+    public static final String EMAIL_INVALIDO = "422.001";
+    public static final String CPF_INVALIDO =  "422.002";
+    public static final String CNPJ_INVALIDO = "422.003";
+    public static final String CELULAR_INVALIDO = "422.004";
+    public static final String ALEATORIA_INVALIDA = "422.005";
+    public static final String CONTA_INVALIDA = "422.006";
+    public static final String NOME_INVALIDO= "422.007";
+    public static final String SOBRENOME_INVALIDO= "422.008";
+    public static final String AGENCIA_INVALIDA= "422.009";
+
+
 
     //HTTP 500
     public static final String INTERNAL_SERVER_ERROR = "500.000";

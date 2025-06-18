@@ -44,8 +44,6 @@ public class ChavePix {
         this.nomeCorrentista = nomeCorrentista;
         this.sobrenomeCorrentista = sobrenomeCorrentista;
         this.dataHoraInclusao = LocalDateTime.now();
-
-        validar();
     }
 
     public void atualizarDadosPermitidos(TipoConta tipoConta,
@@ -62,29 +60,6 @@ public class ChavePix {
         this.numeroConta = numeroConta;
         this.nomeCorrentista = nomeCorrentista;
         this.sobrenomeCorrentista = sobrenomeCorrentista;
-
-        validar();
-    }
-
-    private void validar() {
-        tipoChave.validar(valorChave);
-        tipoConta.validar();
-
-        if (nomeCorrentista == null || nomeCorrentista.length() > 30) {
-            throw new IllegalArgumentException("Nome do correntista inválido.");
-        }
-
-        if (sobrenomeCorrentista != null && sobrenomeCorrentista.length() > 45) {
-            throw new IllegalArgumentException("Sobrenome do correntista inválido.");
-        }
-
-        if (numeroAgencia == null || numeroAgencia.toString().length() > 4) {
-            throw new IllegalArgumentException("Número da agência inválido.");
-        }
-
-        if (numeroConta == null || numeroConta.toString().length() > 8) {
-            throw new IllegalArgumentException("Número da conta inválido.");
-        }
     }
 
     public boolean estaInativa() {

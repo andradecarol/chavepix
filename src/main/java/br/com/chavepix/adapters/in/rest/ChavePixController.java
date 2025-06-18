@@ -26,7 +26,6 @@ public class ChavePixController {
     private final ConsultarChavePixUseCase consultarService;
 
 
-    // Cadastrar nova chave Pix
     @PostMapping
     public ResponseEntity<CadastrarChavePixResponse> cadastrar(@RequestBody @Valid CadastrarChavePixRequest request) {
         CadastrarChavePixResponse response = cadastrarService.cadastrarChave(
@@ -39,7 +38,7 @@ public class ChavePixController {
                 request.getNomeCorrentista(),
                 request.getSobrenomeCorrentista()
         );
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @PutMapping("/{id}")

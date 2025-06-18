@@ -87,6 +87,16 @@ curl --location 'http://localhost:8080/api/v1/chaves-pix?id=4653de7c-a52f-4479-9
 
 # ✔️ Exemplo de requisição local
 ```
-***
+curl --location --request PUT 'http://localhost:8080/api/v1/chaves-pix/{id}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "tipoChave": "EMAIL",
+    "valorChave": "carol@123",
+    "tipoConta": "CORRENTE",
+    "numeroAgencia": 123,
+    "numeroConta": 456789,
+    "nomeCorrentista": "Carolina Andrade",
+    "sobrenomeCorrentista": "Silva"
+}'
 ```
 

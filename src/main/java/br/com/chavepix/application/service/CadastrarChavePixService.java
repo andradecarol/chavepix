@@ -20,6 +20,7 @@ public class CadastrarChavePixService implements CadastrarChavePixUseCase {
 
     private final ChavePixRepository repository;
     private final ChavePixValidator validator;
+    private final ChavePixResponseMapper mapper;
 
     @Override
     public CadastrarChavePixResponse cadastrarChave(TipoChave tipoChave, String valorChave, TipoConta tipoConta, TipoPessoa tipoPessoa, Integer numeroAgencia, Integer numeroConta, String nomeCorrentista, String sobrenomeCorrentista) {
@@ -43,6 +44,6 @@ public class CadastrarChavePixService implements CadastrarChavePixUseCase {
         repository.salvar(novaChave);
 
         log.info("Chave Pix cadastrada com sucesso: id={}, tipo={}, conta {}-{}", novaChave.getId(), tipoChave, numeroAgencia, numeroConta);
-        return ChavePixResponseMapper.toCadastrarResponse(novaChave);
+        return mapper.toCadastrarResponse(novaChave);
     }
 }

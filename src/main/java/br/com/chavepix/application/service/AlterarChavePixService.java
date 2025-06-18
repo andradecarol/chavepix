@@ -28,6 +28,7 @@ public class AlterarChavePixService implements AlterarChavePixUseCase {
     private final ChavePixRepository repository;
     private final ChavePixValidator validator;
     private final MessageConfig messageConfig;
+    private final ChavePixResponseMapper mapper;
 
 
     @Override
@@ -63,6 +64,6 @@ public class AlterarChavePixService implements AlterarChavePixUseCase {
         repository.salvar(chave);
 
         log.info("Chave Pix atualizada com sucesso: id={}", id);
-        return ChavePixResponseMapper.toAlterarResponse(chave);
+        return mapper.toAlterarResponse(chave);
     }
 }

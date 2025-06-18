@@ -23,6 +23,7 @@ public class ConsultarChavePixService implements ConsultarChavePixUseCase {
 
     private final ChavePixRepository repository;
     private final MessageConfig messageConfig;
+    private final ChavePixResponseMapper mapper;
 
     @Override
     public ConsultarChavePixResponse consultarPorId(UUID id) {
@@ -31,7 +32,7 @@ public class ConsultarChavePixService implements ConsultarChavePixUseCase {
         ChavePix chave = repository.buscarPorId(id)
                 .orElseThrow(() -> new NotFoundException(CHAVE_NAO_ENCONTRADA, messageConfig.getMessage(CHAVE_NAO_ENCONTRADA) ));
 
-        return ChavePixResponseMapper.toConsultarResponse(chave);
+        return mapper.toConsultarResponse(chave);
     }
 
     @Override
@@ -44,7 +45,7 @@ public class ConsultarChavePixService implements ConsultarChavePixUseCase {
             throw new NotFoundException(CHAVE_NAO_ENCONTRADA, messageConfig.getMessage(CHAVE_NAO_ENCONTRADA));
         }
 
-        return ChavePixResponseMapper.toConsultarResponseList(chaves);
+        return mapper.toConsultarResponseList(chaves);
     }
 
     @Override
@@ -53,6 +54,6 @@ public class ConsultarChavePixService implements ConsultarChavePixUseCase {
 
         List<ChavePix> chaves = repository.buscarPorNome(nomeCorrentista);
 
-        return ChavePixResponseMapper.toConsultarResponseList(chaves);
+        return mapper.toConsultarResponseList(chaves);
     }
 }

@@ -162,7 +162,7 @@ public class ChavePixValidator {
 
     private void validarAleatoria(String valor) {
         log.info("Validando chave aleatória: {}", valor);
-        if (valor == null || !valor.matches("^[a-zA-Z0-9]{1,36}$")) {
+        if (valor == null || !valor.matches("^[a-zA-Z0-9]{36}$")) {
             throw new UnprocessableEntityException(ALEATORIA_INVALIDA, messageConfig.getMessage(ALEATORIA_INVALIDA));
         }
     }

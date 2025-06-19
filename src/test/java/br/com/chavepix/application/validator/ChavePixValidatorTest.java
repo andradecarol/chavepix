@@ -491,7 +491,7 @@ public class ChavePixValidatorTest {
     // ========== TESTES PARA validarAleatoria ==========
 
     @ParameterizedTest
-    @ValueSource(strings = {"abc123", "ABC123", "a1b2c3d4e5f6", "1234567890abcdefghijklmnopqrstuvwxyz"})
+    @ValueSource(strings = {"a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8", "123456789012345678901234567890123456", "1234567890abcdefghijklmnopqrstuvwxyz"})
     @DisplayName("validarAleatoria - Deve validar chaves aleatórias válidas com sucesso")
     void deveValidarChavesAleatoriasValidasComSucesso(String chaveValida) {
         // When & Then

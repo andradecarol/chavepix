@@ -1,2 +1,5 @@
 /home/carolinaandrade/Pessoal/chavepix/src/test/java/br/com/chavepix/application/service/CadastrarChavePixServiceTest.java
+/home/carolinaandrade/Pessoal/chavepix/src/test/java/br/com/chavepix/application/service/ConsultarChavePixServiceTest.java
 /home/carolinaandrade/Pessoal/chavepix/src/test/java/br/com/chavepix/adapters/in/rest/ChavePixControllerTest.java
+/home/carolinaandrade/Pessoal/chavepix/src/test/java/br/com/chavepix/application/validator/ChavePixValidatorTest.java
+/home/carolinaandrade/Pessoal/chavepix/src/test/java/br/com/chavepix/application/service/AlterarChavePixServiceTest.java

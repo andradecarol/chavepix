@@ -7,6 +7,8 @@ import br.com.chavepix.domain.model.TipoChave;
 import br.com.chavepix.domain.model.TipoConta;
 import br.com.chavepix.domain.model.TipoPessoa;
 import br.com.chavepix.domain.ports.out.ChavePixRepository;
+import br.com.chavepix.domain.validation.ValidadorChaveFactory;
+import br.com.chavepix.domain.validation.ValidadorChaveStrategy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,7 @@ public class ChavePixValidator {
 
     private final ChavePixRepository repository;
     private final MessageConfig messageConfig;
+    private final ValidadorChaveFactory validadorChaveFactory;
 
     public void validarChaveExistente(String valorChave) {
         log.info("Validando existência da chave Pix: {}", valorChave);
@@ -78,17 +81,8 @@ public class ChavePixValidator {
 
     private void validarTipoChave(TipoChave tipo, String valor) {
         log.info("Validando tipo de chave: {} com valor '{}'", tipo, valor);
-        switch (tipo) {
-            case CPF -> validarCpf(valor);
-            case CNPJ -> validarCnpj(valor);
-            case EMAIL -> validarEmail(valor);
-            case CELULAR -> validarCelular(valor);
-            case ALEATORIA -> validarAleatoria(valor);
-            default -> {
-                log.error("Tipo de chave inválido: {}", tipo);
-                throw new UnprocessableEntityException("TIPO_CHAVE_INVALIDO", "Tipo de chave inválido.");
-            }
-        }
+        ValidadorChaveStrategy validador = validadorChaveFactory.getStrategy(tipo);
+        validador.validar(valor);
     }
 
     private void validarCpf(String valor) {

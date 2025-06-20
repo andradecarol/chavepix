@@ -1,11 +1,16 @@
 server:
-  port: 8080
+  port: ${SERVER_PORT:8080}
 
 spring:
+  application:
+    name: case-chave-pix
+    env: dev
+  profiles:
+    active: dev
   datasource:
-    url: jdbc:postgresql://localhost:5432/pixdb
-    username: user
-    password: user
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:pixdb}
+    username: ${DB_USER:user}
+    password: ${DB_PASSWORD:user}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
